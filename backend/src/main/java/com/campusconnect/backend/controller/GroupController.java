@@ -36,11 +36,12 @@ public class GroupController {
         group.setSubject(request.getSubject());
         group.setDescription(request.getDescription());
 
-        // Temporary until we have a real logged-in user
-        group.setCreatedBy(java.util.UUID.randomUUID());
+        group.setCreatedBy(request.getCreatedBy());
+
         group.setCreatedAt(java.time.Instant.now());
 
         Group saved = groupService.createGroup(group);
         return ResponseEntity.ok(saved);
+
     }
 }
